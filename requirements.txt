@@ -20,7 +20,6 @@ django-model-utils==4.1.1
 django-phonenumber-field==5.1.0
 filelock==3.0.12
 flatbuffers==1.12
-freeze==3.0
 gast==0.3.3
 google-auth==1.28.0
 google-auth-oauthlib==0.4.3
