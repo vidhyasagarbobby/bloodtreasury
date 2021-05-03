@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'bloodtreasury.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd35ee2fkg9o7da',
-        'USER': 'iqvxhfwqgybiop',
-        'PASSWORD': '9b268218a9f01b69e6752a61c8b89f7d4ea414b4b87e2fea90b7f44fb4e9c6c6',
-        'HOST': 'ec2-3-211-37-117.compute-1.amazonaws.com',
+        'NAME': 'dbrhj253f948tm',
+        'USER': 'rtdwtuenyaxamk',
+        'PASSWORD': '2db6c9fd2aa83e9668791ab2873b52979a783000b26e747d6e8262f9abba4406',
+        'HOST': 'ec2-54-161-239-198.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
