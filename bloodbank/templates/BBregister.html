@@ -1,0 +1,70 @@
+{% extends 'bloodbank.html' %}
+{% load static %}
+
+{% block login-register %}
+<form action="register" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Blood Bank Name</label>
+            <input type="text" class="form-control" required name="name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Contact Number</label>
+            <input type="text" class="form-control" required name="phone">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Email</label>
+            <input type="email" class="form-control" required name="email">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Website</label>
+            <input type="url" class="form-control" name="website">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Address</label>
+            <input type="text" class="form-control" required name="address">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <label class="label" style="margin-bottom: 0;">State</label>
+            <select class="form-control" required name="state">
+                <option value="-1">Select State</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+            </select>
+        </div>
+        <div class="col col-lg-6">
+            <label class="label" style="margin-bottom: 0;">City</label>
+            <select class="form-control" required name="city">
+                <option value="-1">Select City</option>
+                <option value="Guntur">Guntur</option>
+                <option value="Chilakaluripet">Chilakaluripet</option>
+                <option value="Narasaraopet">Narasaraopet</option>
+            </select>
+        </div>
+    </div>
+    <div class="col">
+        <input class="form-control btn-danger" type="submit" value="Register" id="submit"
+            style="height: 3rem; color: #fff; margin-top:2rem;">
+    </div>
+</form>
+{% endblock %}

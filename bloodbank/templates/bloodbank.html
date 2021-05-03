@@ -1,0 +1,42 @@
+{% extends 'navbar.html'%}
+{% load static %}
+
+{% block content %}
+<h3 style="padding-bottom: 3rem;">Blood Bank</h3>
+<div class="modal-content col-lg-5" style="margin: auto; box-shadow: 0 0 10px #010101;">
+    <div class="modal-header">
+        <div class="container">
+            <div class="row">
+                <div class="col" style="border-right: 0.5px solid #303030;">
+                    <a href="/bloodbank/register">
+                        <h5 class="text-dark text-center">Register</h5>
+                        <!-- <button type="button" class="donate btn btn-dark">Register</button> -->
+                    </a>
+                </div>
+                <div class="col" style="border-left: 0.5px solid #303030;">
+                    <a href="/bloodbank/login">
+                        <h5 class="text-dark text-center">Login</h5>
+                        <!-- <button type="button" class="request btn btn-outline-light">Login</button> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        {% block login-register %}
+        <div class="container">
+            <div class="row">
+                <div class="col" id="blood-donation-img" style="padding: 0;">
+                    <img class="banner" src="{% static 'images/bloodbank.png' %}" alt="Donate Blood" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    <div class="modal-footer">
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

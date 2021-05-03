@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BloodBank | Blood Treasury</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Orbitron:wght@669&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/hands.png' %}"/>
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    {% if bloodbank.is_authenticated %}
+    <section id="title">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class=" navbar-brand" href="../" style="color: #cd0404;">Blood Treasury</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="update-stock">Update Stock</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="edit-details">Edit Details</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="change-password">Change Password</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% block content %}
+        <h3>Welcome {{ bloodbank.name | default:'Guest' }}</h3>
+        <h1 class="text-center" style="color: black">Blood Stock Details</h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr class="table-dark table-active text-center">
+                    <th width="10%">Blood Group</th>
+                    <th width="10%">A+</th>
+                    <th width="10%">A-</th>
+                    <th width="10%">B+</th>
+                    <th width="10%">B-</th>
+                    <th width="10%">O+</th>
+                    <th width="10%">O-</th>
+                    <th width="10%">AB+</th>
+                    <th width="10%">AB-</th>
+                </tr>
+            </thead>
+            <tr class="bg-danger table-active text-center">
+                <td class="text-light">Available</td>
+                <td class="text-light">{{bloodstock.a_pos}}</td>
+                <td class="text-light">{{bloodstock.a_neg}}</td>
+                <td class="text-light">{{bloodstock.b_pos}}</td>
+                <td class="text-light">{{bloodstock.b_neg}}</td>
+                <td class="text-light">{{bloodstock.o_pos}}</td>
+                <td class="text-light">{{bloodstock.o_neg}}</td>
+                <td class="text-light">{{bloodstock.ab_pos}}</td>
+                <td class="text-light">{{bloodstock.ab_neg}}</td>
+            </tr>
+        </table>
+        {% endblock %}
+    </section>
+    {% else %}
+    ***Please login to continue***
+    {% endif %}
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ab1caf69.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

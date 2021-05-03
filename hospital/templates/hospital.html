@@ -1,0 +1,33 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block content %}
+<h3 style="padding-bottom: 3rem;">Welcome Katuri</h3>
+<div class="modal-content col-lg-5" style="margin: auto; box-shadow: 0 0 10px #010101;">
+    <div class="modal-header">
+        <h4 class="text-center">Please login to continue</h4>
+    </div>
+    <div class="modal-body">
+        {% block login-register %}
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <label class="label" style="margin-bottom: 0;">Enter your password here</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="col-3">
+                    <input class="form-control btn-danger" type="submit" value="Login" id="submit"
+                        style="color: #fff; margin-top: 1.5rem;">
+                </div>
+            </div>
+        </form>
+        {% endblock %}
+    </div>
+    <div class="modal-footer">
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

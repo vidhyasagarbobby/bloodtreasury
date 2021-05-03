@@ -1,0 +1,37 @@
+
+.page{
+  margin: auto;
+  padding: 10px 30px;
+  align-self: center;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  background-color: #fff;
+  box-shadow: 10px 10px 5px #010101;
+}
+
+
+.modal-header{
+  border-bottom: 1px solid black;
+}
+.form-title{
+  font-family: 'Dancing Script', cursive;
+}
+
+.form-control{
+  width: 100%;
+  font-family: 'PT Serif', serif;
+  height: 44px;
+  font-size: 20px;
+  margin: 0.75rem 0rem;
+}
+
+.label{
+  text-align: left;
+  float: left;
+  font-family: 'PT Serif', serif;
+}
+
+#submit{
+  border-radius: 5px;
+  background-color: #eb0000;
+}

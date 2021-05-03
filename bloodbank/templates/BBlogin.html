@@ -1,0 +1,24 @@
+{% extends 'bloodbank.html' %}
+{% load static %}
+
+{% block login-register %}
+<form action="login" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="label" style="margin-bottom: 0;">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+    </div>
+    <div class="col">
+        <input class="form-control btn-danger" type="submit" value="Login" id="submit"
+            style="height: 3rem; color: #fff; margin-top:2rem;">
+    </div>
+</form>
+{% endblock %}

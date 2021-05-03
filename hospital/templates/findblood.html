@@ -1,0 +1,58 @@
+{% extends 'Hdashboard.html' %}
+{% load static %}
+
+{% block content %}
+<a class="btn btn-dark" href="./" title="Donor page"><i class="fas fa-chevron-left"></i>Back</a>
+<h3 class="text-center" style="color: black">Available Blood Banks</h3>
+<div style="overflow-x:auto;">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark table-active">
+                <th>S.No.</th>
+                <th>BloodBank</th>
+                <th>Stock</th>
+                <th>PhoneNumber</th>
+                <th>EmailAddress</th>
+                <th>Location</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        {% for bloodbank in bloodbanks %}
+        <tr class="table-secondary">
+            <td class="text-dark">{{forloop.counter}}</td>
+            <td class="text-dark">{{bloodbank.1}}</td>
+            <td class="text-dark">{{bloodbank.2}} unit(s)</td>
+            <td class="text-dark">{{bloodbank.3}}</td>
+            <td class="text-dark">{{bloodbank.4}}</td>
+            <td class="text-dark">{{bloodbank.5}} <a href="https://www.google.com/maps/search/{{bloodbank.1}}" target="_blank"><i class="fa fa-map-marker"></i></a></td>
+            <td class="text-dark"><a href="{{bloodbank.6}}" target="_blank">{{bloodbank.6}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<h3 class="text-center" style="color: black">Available Donors</h3>
+<div style="overflow-x:auto;">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark table-active">
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>LastDonationDate</th>
+                <th>PhoneNumber</th>
+                <th>EmailAddress</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        {% for donor in donors %}
+        <tr class="table-secondary">
+            <td class="text-dark">{{forloop.counter}}</td>
+            <td class="text-dark">{{donor.name}} <a href="/donor/{{donor.username}}" target="_blank"><i class="fas fa-external-link-alt"></i></a></td>
+            <td class="text-dark">{{donor.dod}}</td>
+            <td class="text-dark">{{donor.phone}}</td>
+            <td class="text-dark">{{donor.email}}</td>
+            <td class="text-dark">{{donor.city}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

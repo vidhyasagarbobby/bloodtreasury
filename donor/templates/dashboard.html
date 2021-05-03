@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blood Treasury</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Orbitron:wght@669&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/hands.png' %}"/>
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    {% if donor.is_authenticated %}
+    <section id="title">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class=" navbar-brand" href="../" style="color: #cd0404;">Blood Treasury</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="update-history">Update History</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="edit-details">Edit Details</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="change-password">Change Password</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% block content %}
+        <h3>Welcome {{ donor.name | default:'Guest' }}</h3>
+        <h1 class="text-center" style="color: black">Your donation history</h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr class="table-dark table-active">
+                    <th>S.No</th>
+                    <th>Donation Date</th>
+                    <th>No. of Units</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            {% for donation in donationHistory %}
+            {% if forloop.counter|divisibleby:2 %}
+            <tr class="table-dark table-active">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ donation.dod }}</td>
+                <td>{{ donation.units }}</td>
+                <td>{{ donation.purpose }}</td>
+            </tr>
+            {% else %}
+            <tr class="table-light table-active">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ donation.dod }}</td>
+                <td>{{ donation.units }}</td>
+                <td>{{ donation.purpose }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </section>
+    {% else %}
+    {% block dashboard %}
+    <section id="title">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class=" navbar-brand" href="" style="color: #cd0404;">Blood Treasury</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/donor">Donor</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/hospital">Hospital</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/bloodbank">Blood Bank</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="card text-center col-lg-5" style="margin:auto; box-shadow: 0 0 10px black">
+            <div class="card-body">
+                <h5 class="card-title">{{donor.name}}</h5>
+                <p class="card-text">Blood Group : {{donor.blood_group}}</p>
+                <p class="card-text">Sex : {{donor.gender}}</p>
+                <p class="card-text">Recent Donation : {{donor.dod}}</p>
+                <p class="card-text">Location : {{donor.city}}, {{donor.state}}</p>
+                <a href="tel:{{donor.phone}}" class="btn btn-success"><i class="fa fa-phone-alt"></i> Call</a>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    {% endif %}
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ab1caf69.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

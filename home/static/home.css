@@ -1,0 +1,77 @@
+body{
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  #title{
+    background-color: #fff;
+    padding: 3% 5% 7%;
+  }
+  h1{
+    font-family: "Montserrat-Black", sans-serif;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+  h2{
+    font-family: "Montserrat-Bold";
+    font-size: 3rem;
+    line-height: 1.5;
+  
+  }
+  h3{
+    font-family: 'Montserrat', sans-serif;
+  }
+  p{
+    color: #8f8f8f;
+  }
+  
+  nav{
+    padding: 5% 7%;
+  }
+  
+  /* .navbar{
+    padding: 3% 3% 0;
+  } */
+  /* Navigation Bar */
+  .navbar-brand{
+    color: #eb0000;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    /* -webkit-text-stroke: 0.1px white; */
+    /* text-shadow: -5px -5px 3px #303030; */
+  }
+  .nav-link{
+    font-family: "Montserrat-Light-Italic", cursive;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #eb0000; 
+  }
+  
+  .nav-item:hover{
+    background-color: #eb0000;
+    color: #fff;
+  }
+  
+/* Title and photo */
+  
+  h1.quote{
+    color: #343A40;
+    font-family: 'Merienda', cursive;
+  }
+  .title-photo{
+    padding-top: 5rem;
+    margin: 0;
+  }
+  #blood-donation-img{
+    padding-top: 1rem;
+    padding-left: 4rem;
+  }
+  
+  
+  /* Buttons */
+  .donate, .request{
+    margin: 5% 3% 0;
+  }
+  

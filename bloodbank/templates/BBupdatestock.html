@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blood Treasury</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Orbitron:wght@669&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/hands.png' %}"/>
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    {% if bloodbank.is_authenticated %}
+    <section id="title">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-md navbar-light" style="padding-bottom: 5rem;">
+            <a class=" navbar-brand" href="/" style="color: #cd0404;">Blood Treasury</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./" title="Donor page"><i class="fas fa-chevron-left"></i>Back</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="edit-details">Edit Details</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="change-password">Change Password</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content col-lg-5" style="margin: auto; box-shadow: 0 0 10px #010101;">
+            <div class="modal-header">
+                <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Update Stock</h3>
+            </div>
+            <div class="modal-body">
+                <form action="update-stock" method="POST">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">A+</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="a_pos" value="{{bloodstock.a_pos}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">A-</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="a_neg" value="{{bloodstock.a_neg}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">B+</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="b_pos" value="{{bloodstock.b_pos}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">B-</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="b_neg" value="{{bloodstock.b_neg}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">O+</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="o_pos" value="{{bloodstock.o_pos}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">O-</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="o_neg" value="{{bloodstock.o_neg}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">AB+</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="ab_pos" value="{{bloodstock.ab_pos}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label class="label" style="margin-bottom: 0;">AB-</label>
+                            </div>
+                            <div class="col-1">
+                                <span class="text-center">:</span>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" required min="0" name="ab_neg" value="{{bloodstock.ab_neg}}">
+                            </div>
+                        </div>
+                        <input class="form-control btn-danger" type="submit" value="Update" id="submit" style="height: 3rem; color: #fff; margin-top:2rem;">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% else %}
+    ***You are not authorized to access this page***
+    {% endif %}
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ab1caf69.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

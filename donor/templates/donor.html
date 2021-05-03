@@ -1,0 +1,49 @@
+{% extends 'navbar.html'%}
+{% load static %}
+
+{% block content %}
+<div class="title-photo row">
+    <div class="container">
+        <div class="row">
+            <div class="col" id="blood-donation-img" style="padding: 0;">
+                <img class="banner" src="{% static 'images/donor.png' %}" alt="Donate Blood" width="500">
+            </div>
+            <div class="col">
+                <div class="modal-content" style="box-shadow: 0 0 10px;">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col" style="border-right: 0.5px solid #303030;">
+                                    <a href="/donor/register">
+                                        <h5 class="text-dark text-center">Register</h5>
+                                        <!-- <button type="button" class="donate btn btn-dark">Register</button> -->
+                                    </a>
+                                </div>
+                                <div class="col" style="border-left: 0.5px solid #303030;">
+                                    <a href="/donor/login">
+                                        <h5 class="text-dark text-center">Login</h5>
+                                        <!-- <button type="button" class="request btn btn-outline-light">Login</button> -->
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        {% block login-register %}
+                        <h1 class="quote text-dark" style="text-align: center;">BE A DONOR,<br>SAVE A LIFE.</h1>
+                        {% endblock %}
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'navbar.html'%}
+{% load static %}
+{% block content %}
+<!-- Title -->
+  <div class="title-photo row">
+    <div class="col-lg-6">
+      <h1 class="quote">DONATE BLOOD AND MAKE THE W🩸RLD A HEALTHIER PLACE</h1>
+      <a href="/donor"><button type="button" class="donate btn btn-dark"> <i class="fas fa-hand-holding-water"></i> Donate </button></a>
+      <a href="/hospital"><button type="button" class="request btn btn-light" style="border: 1px solid #343A40;"><i class="fas fa-praying-hands"></i>Request</button></a>
+    </div>
+    <div class="col-lg-6" id="blood-donation-img">
+      <img class="banner" src="{% static 'images/banner.png' %}" alt="Donate Blood" width="500">
+    </div>
+  </div>
+  </div>
+{% endblock %}
